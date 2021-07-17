@@ -14,37 +14,41 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.helixtrajectory.ui;
-
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+package com.team2363.lib.json;
 
 /**
- * This class creates the main scene that can be placed on the main window.
- *
+ * This class wraps a String value as a <code>JSONEntry</code>.
+ * 
  * @author Justin Babilino
  */
-public class MainScene {
-
+public class StringJSONEntry extends JSONEntry {
+    
     /**
-     * The main <code>Scene</code>.
+     * The <code>String</code> value
      */
-    private final Scene mainScene;
-
+    private final String string;
+    
     /**
-     * The main pane that is placed on the scene.
+     * Constructs a <code>StringJSONEntry</code> with a String value.
+     * 
+     * @param string the String value
      */
-    private final Pane mainPane;
-
-    /**
-     * Creates the main scene.
-     */
-    public MainScene() {
-        mainPane = new MainPane();
-        mainScene = new Scene(mainPane);
+    public StringJSONEntry(String string) {
+        this.string = string;
     }
     
-    public Scene getScene() {
-        return mainScene;
+    @Override
+    public String getString() throws JSONEntryException {
+        return string;
+    }
+    
+    @Override
+    public String toString() {
+        return "\"" + string + "\"";
+    }
+
+    @Override
+    public String getJSONText(int indentLevel, JSONFormat format) {
+        return "\"" + string + "\"";
     }
 }

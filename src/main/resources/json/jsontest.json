@@ -1,0 +1,20 @@
+{
+    "name": "Justin Babilino",
+    "age": 5,
+    "friends": [
+        {
+            "name": "Robert Nichols",
+            "age": 54
+        },
+        {
+            "name": "Bradley Joseph",
+            "age": null,
+            "test": {
+
+            }
+        }
+    ],
+    "list":
+        ["a", "b", "c", "d"
+        ]
+}

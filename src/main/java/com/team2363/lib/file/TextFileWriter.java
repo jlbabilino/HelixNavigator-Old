@@ -14,37 +14,33 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.helixtrajectory.ui;
+package com.team2363.lib.file;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 /**
- * This class creates the main scene that can be placed on the main window.
- *
+ * This class writes text to files
+ * 
  * @author Justin Babilino
  */
-public class MainScene {
-
-    /**
-     * The main <code>Scene</code>.
-     */
-    private final Scene mainScene;
-
-    /**
-     * The main pane that is placed on the scene.
-     */
-    private final Pane mainPane;
-
-    /**
-     * Creates the main scene.
-     */
-    public MainScene() {
-        mainPane = new MainPane();
-        mainScene = new Scene(mainPane);
-    }
+public class TextFileWriter {
+    private final File file;
+    private final PrintWriter writer;
     
-    public Scene getScene() {
-        return mainScene;
+    public TextFileWriter(File file) throws FileNotFoundException {
+        if (file == null) {
+            throw new IllegalArgumentException("File object passed in constructor is null");
+        }
+        this.file = file;
+        writer = new PrintWriter(this.file);
+    }
+    public void printString(String str) {
+        System.out.println("Printing to file: " + file.getAbsolutePath());
+        writer.print(str);
+    }
+    public void close() {
+        writer.close();
     }
 }

@@ -14,37 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.helixtrajectory.ui;
-
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+package com.team2363.lib.json;
 
 /**
- * This class creates the main scene that can be placed on the main window.
  *
  * @author Justin Babilino
  */
-public class MainScene {
-
-    /**
-     * The main <code>Scene</code>.
-     */
-    private final Scene mainScene;
-
-    /**
-     * The main pane that is placed on the scene.
-     */
-    private final Pane mainPane;
-
-    /**
-     * Creates the main scene.
-     */
-    public MainScene() {
-        mainPane = new MainPane();
-        mainScene = new Scene(mainPane);
-    }
+public class JSONReader {
     
-    public Scene getScene() {
-        return mainScene;
-    }
 }

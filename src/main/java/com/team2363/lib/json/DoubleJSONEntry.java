@@ -14,37 +14,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.helixtrajectory.ui;
-
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+package com.team2363.lib.json;
 
 /**
- * This class creates the main scene that can be placed on the main window.
+ * This class wraps a <code>double</code> value in a <code>JSONEntry</code>.
  *
  * @author Justin Babilino
  */
-public class MainScene {
+public class DoubleJSONEntry extends JSONEntry {
 
     /**
-     * The main <code>Scene</code>.
+     * The <code>double</code> value in the entry.
      */
-    private final Scene mainScene;
+    private final double number;
 
     /**
-     * The main pane that is placed on the scene.
+     * Constructs a <code>DoubleJSONEntry</code> with a <code>double</code>
+     * value to be stored in the entry.
+     *
+     * @param number the <code>double</code> value to be stored in this entry
      */
-    private final Pane mainPane;
-
-    /**
-     * Creates the main scene.
-     */
-    public MainScene() {
-        mainPane = new MainPane();
-        mainScene = new Scene(mainPane);
+    public DoubleJSONEntry(double number) {
+        this.number = number;
     }
-    
-    public Scene getScene() {
-        return mainScene;
+
+    @Override
+    public double getDouble() throws JSONEntryException {
+        return number;
+    }
+
+    @Override
+    public String getJSONText(int indentLevel, JSONFormat format) {
+        return Double.toString(number);
     }
 }

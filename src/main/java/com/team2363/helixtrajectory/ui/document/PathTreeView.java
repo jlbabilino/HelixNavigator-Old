@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Triple Helix Robotics - FRC Team 2363
+ * Copyright (C) 2021 Justin Babilino
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,37 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.helixtrajectory.ui;
+package com.team2363.helixtrajectory.ui.document;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 
 /**
- * This class creates the main scene that can be placed on the main window.
  *
  * @author Justin Babilino
  */
-public class MainScene {
-
-    /**
-     * The main <code>Scene</code>.
-     */
-    private final Scene mainScene;
-
-    /**
-     * The main pane that is placed on the scene.
-     */
-    private final Pane mainPane;
-
-    /**
-     * Creates the main scene.
-     */
-    public MainScene() {
-        mainPane = new MainPane();
-        mainScene = new Scene(mainPane);
-    }
+public class PathTreeView extends TreeView<String> {
     
-    public Scene getScene() {
-        return mainScene;
+    public PathTreeView() {
+        TreeItem<String> path = new TreeItem<>("Path");
+        path.getChildren().add(new TreeItem<>("Waypoints"));
+        path.getChildren().add(new TreeItem<>("Obstacles"));
+        setRoot(path);
+        
     }
 }

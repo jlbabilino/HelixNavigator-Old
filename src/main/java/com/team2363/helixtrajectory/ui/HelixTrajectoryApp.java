@@ -62,7 +62,7 @@ public class HelixTrajectoryApp extends Application {
         mainStage.setScene(mainScene.getScene());
         Log.log("Helix Trajectory has successfully launched.");
         Console.out.set("Welcome to Helix Trajectory");
-        Console.graphic.set(ConsoleGraphic.WARNING);
+        Console.graphic.set(ConsoleGraphic.INFO);
 
         mainStage.show();
     }

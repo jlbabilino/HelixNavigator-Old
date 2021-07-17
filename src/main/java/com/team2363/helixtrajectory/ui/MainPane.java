@@ -18,6 +18,7 @@
 package com.team2363.helixtrajectory.ui;
 
 import com.team2363.helixtrajectory.ui.console.ConsolePane;
+import com.team2363.helixtrajectory.ui.document.DocumentPane;
 import com.team2363.helixtrajectory.ui.toolbar.Toolbar;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
@@ -32,14 +33,19 @@ import javafx.scene.layout.Pane;
 public class MainPane extends BorderPane {
     
     /**
-     * The toolbar menu at the top of the scene.
+     * The toolbar menu at the top of the scene
      */
     private final MenuBar toolbar;
     
     /**
-     * The console at the bottom of the scene.
+     * The console at the bottom of the scene
      */
     private final Pane consolePane;
+    
+    /**
+     * The document pane at the left of the scene
+     */
+    private final Pane documentPane;
     
     /**
      * Creates the <code>BorderPane</code> with the
@@ -48,7 +54,10 @@ public class MainPane extends BorderPane {
     public MainPane() {
         toolbar = new Toolbar();
         consolePane = new ConsolePane();
+        documentPane = new DocumentPane();
+        
         setTop(toolbar);
         setBottom(consolePane);
+        setLeft(documentPane);
     }
 }

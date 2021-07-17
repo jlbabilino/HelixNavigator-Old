@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Triple Helix Robotics - FRC Team 2363
+ * Copyright (C) 2021 Justin Babilino
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,27 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.team2363.lib;
+package com.team2363.helixtrajectory.ui.document;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import javafx.scene.control.ComboBox;
 
 /**
- * This class writes text to files
- * 
+ *
  * @author Justin Babilino
  */
-public class TextFileWriter {
-    private final File file;
-    private final PrintWriter writer;
+public class PathChooserBox extends ComboBox<String> {
     
-    public TextFileWriter(File file) throws FileNotFoundException {
-        if (file == null) {
-            throw new IllegalArgumentException("File object passed in constructor is null");
-        }
-        this.file = file;
-        writer = new PrintWriter(file);
+    public PathChooserBox() {
+        getItems().add("test");
     }
 }
