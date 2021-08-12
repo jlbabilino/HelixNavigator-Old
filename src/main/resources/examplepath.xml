@@ -1,0 +1,10 @@
+<config>
+  <maxvelocity>10.0</maxvelocity>
+  
+</config>
+<waypoints>
+  <waypoint>
+    <x>0.0</x>
+	<y>0.0</y>
+	<head>
+</waypoints>

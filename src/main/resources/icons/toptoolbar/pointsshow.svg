@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="50mm"
+   height="50mm"
+   viewBox="0 0 50 50"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="pointsshow.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true"
+     inkscape:zoom="2.9647587"
+     inkscape:cx="57.171601"
+     inkscape:cy="90.563863"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#552200;fill-rule:evenodd;stroke-width:0.263998"
+       id="path31"
+       cx="8.6971321"
+       cy="18.165054"
+       r="6" />
+    <circle
+       style="fill:#552200;fill-rule:evenodd;stroke-width:0.350517"
+       id="path33"
+       cx="41.302868"
+       cy="31.834946"
+       r="6" />
+    <circle
+       style="fill:#552200;fill-rule:evenodd;stroke-width:0.255481"
+       id="path35"
+       cx="31.834946"
+       cy="8.6971321"
+       r="6" />
+    <circle
+       style="fill:#552200;fill-rule:evenodd;stroke-width:0.350517"
+       id="path33-8"
+       cx="18.165054"
+       cy="41.302868"
+       r="6" />
+    <path
+       id="rect279"
+       style="fill:none;stroke:none;stroke-width:0.318792;stroke-opacity:1;fill-opacity:1"
+       d="M 8.6971319,18.165054 31.834946,8.6971319 41.302868,31.834946 18.165054,41.302868 Z" />
+  </g>
+</svg>
