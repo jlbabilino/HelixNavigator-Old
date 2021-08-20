@@ -26,10 +26,10 @@ public class JSONFormat {
 
     // These options are set with default settings that can be overwritten later
     private JSONFormatOption.IndentSpaces indentSpaces = JSONFormatOption.IndentSpaces.FOUR;
-    private JSONFormatOption.ArrayNewlinePerItem arrayNewlinePerItem = JSONFormatOption.ArrayNewlinePerItem.FALSE;
+    private JSONFormatOption.ArrayNewlinePerItem arrayNewlinePerItem = JSONFormatOption.ArrayNewlinePerItem.TRUE;
     private JSONFormatOption.ArrayBeginOnNewline arrayBeginOnNewline = JSONFormatOption.ArrayBeginOnNewline.FALSE;
     private JSONFormatOption.ObjectNewlinePerItem objectNewlinePerItem = JSONFormatOption.ObjectNewlinePerItem.TRUE;
-    private JSONFormatOption.ObjectBeginOnNewline objectBeginOnNewline = JSONFormatOption.ObjectBeginOnNewline.TRUE;
+    private JSONFormatOption.ObjectBeginOnNewline objectBeginOnNewline = JSONFormatOption.ObjectBeginOnNewline.FALSE;
 
     /**
      * Constructs a <code>JSONFormat</code> with an array of format options. Default

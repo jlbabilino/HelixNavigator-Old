@@ -21,10 +21,13 @@ package com.team2363.lib.json;
  * a JSON object that does not contain an entry with that key. For example, this
  * would be thrown if a user tried to get a named entry called "age" for a
  * "person" when there was no entry in the object with that name.
+ * <p>
+ * This is an <i>unchecked exception</i> so ensure that code that implements
+ * this API knows what keys should be availible in each JSON object.
  *
  * @author Justin Babilino
  */
-public class JSONKeyNotFoundException extends Exception {
+public class JSONKeyNotFoundException extends RuntimeException {
 
     /**
      * Constructs a <code>JSONNameNotFoundException</code> with a message to be

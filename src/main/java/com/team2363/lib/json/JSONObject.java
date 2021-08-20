@@ -20,9 +20,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * This class represents a JSON object type. It contains a
- * <code>JSONEntry</code> that contains key-value pairs. It implements a
- * <code>Map</code> to achieve this.
+ * This class represents a JSON object type. It contains key-value pairs where
+ * the key is a {@code String}, and the value is a {@code JSONEntry}. It
+ * implements a <code>Map</code> to achieve this. If a program creates JSON data
+ * manually (rather than from serialization), then the map used to construct the
+ * {@code JSONObject} will not be exposed to other classes directly in any way,
+ * and it will not modify the map, but it will access methods in it. This means
+ * that modifications to the map WILL AFFECT this object. Please try to keep the
+ * map used for construction hidden from other classes after it is instantiated
+ * with the appropriate data.
  * 
  * @author Justin Babilino
  */
@@ -45,11 +51,16 @@ public class JSONObject extends JSONEntry {
 
     @Override
     public JSONEntry getKeyedEntry(String key) throws JSONKeyNotFoundException {
-        JSONEntry entry = map.get(key);
-        if (entry != null) {
-            return entry;
+        if (containsKey(key)) {
+            return map.get(key);
+        } else {
+            throw new JSONKeyNotFoundException("Key \"" + key + "\" not found in object.");
         }
-        throw new JSONKeyNotFoundException("Keyed entry not found in object.");
+    }
+
+    @Override
+    public boolean containsKey(String key) {
+        return map.containsKey(key);
     }
 
     @Override

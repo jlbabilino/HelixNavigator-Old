@@ -58,4 +58,9 @@ public class JSON {
     public JSONEntry getRoot() {
         return rootEntry;
     }
+
+    @Override
+    public String toString() {
+        return exportJSON();
+    }
 }

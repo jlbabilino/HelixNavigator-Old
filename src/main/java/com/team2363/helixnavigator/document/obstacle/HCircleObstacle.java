@@ -16,7 +16,7 @@
  */
 package com.team2363.helixnavigator.document.obstacle;
 
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -52,7 +52,7 @@ public class HCircleObstacle extends HAbstractObstacle {
         centerX.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "center_x")
+    @SerializedJSONObjectValue(key = "center_x")
     public final double getCenterX() {
         return centerX.get();
     }
@@ -65,7 +65,7 @@ public class HCircleObstacle extends HAbstractObstacle {
         centerY.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "center_y")
+    @SerializedJSONObjectValue(key = "center_y")
     public final double getCenterY() {
         return centerY.get();
     }
@@ -78,7 +78,7 @@ public class HCircleObstacle extends HAbstractObstacle {
         radius.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "radius")
+    @SerializedJSONObjectValue(key = "radius")
     public final double getRadius() {
         return radius.get();
     }

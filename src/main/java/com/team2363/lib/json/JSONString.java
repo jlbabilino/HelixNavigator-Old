@@ -34,6 +34,9 @@ public class JSONString extends JSONEntry {
      * @param string the String value
      */
     public JSONString(String string) {
+        if (string == null) {
+            throw new IllegalArgumentException("null");
+        }
         this.string = string;
     }
 

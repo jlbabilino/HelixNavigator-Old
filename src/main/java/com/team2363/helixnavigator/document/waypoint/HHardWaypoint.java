@@ -1,6 +1,6 @@
 package com.team2363.helixnavigator.document.waypoint;
 
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -40,7 +40,7 @@ public class HHardWaypoint extends HAbstractWaypoint {
     /**
      * @return the current heading value
      */
-    @SerializedJSONObjectElement(key = "heading")
+    @SerializedJSONObjectValue(key = "heading")
     public final double getHeading() {
         return heading.get();
     }

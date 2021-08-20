@@ -97,7 +97,20 @@ public abstract class JSONEntry {
      * @throws JSONKeyNotFoundException if the key does not exist in the object
      */
     public JSONEntry getKeyedEntry(String key) throws JSONEntryException, JSONKeyNotFoundException {
-        throw new JSONEntryException("This keyed entry does not exist.");
+        throw new JSONEntryException("This JSON entry is not an object.");
+    }
+
+    /**
+     * Checks if a string key is availible in this JSON object, but only succeeds if
+     * the entry is of type <code>JSONObject</code>.
+     * 
+     * @param key the key to check for
+     * @return <code>true</code> if and only if the key exists in this object
+     * @throws JSONEntryException if this JSON entry is not an object
+     */
+    public boolean containsKey(String key) throws JSONEntryException {
+        throw new JSONEntryException("This JSON entry is not an object.");
+
     }
 
     /**
@@ -108,7 +121,7 @@ public abstract class JSONEntry {
      * @throws JSONEntryException if the requested entry is unavailable
      */
     public JSONEntry[] getArray() throws JSONEntryException {
-        throw new JSONEntryException("This array does not exist.");
+        throw new JSONEntryException("This JSON entry is not an array.");
     }
 
     /**
@@ -120,7 +133,7 @@ public abstract class JSONEntry {
      * @throws JSONEntryException if the requested entry is unavailable
      */
     public boolean getBoolean() throws JSONEntryException {
-        throw new JSONEntryException("This boolean does not exist.");
+        throw new JSONEntryException("This JSON entry is not a boolean.");
     }
 
     /**
@@ -132,7 +145,7 @@ public abstract class JSONEntry {
      * @throws JSONEntryException if the requested entry is unavailable
      */
     public Number getNumber() throws JSONEntryException {
-        throw new JSONEntryException("This number entry does not exist.");
+        throw new JSONEntryException("This JSON entry is not a number.");
     }
 
     /**
@@ -144,7 +157,7 @@ public abstract class JSONEntry {
      * @throws JSONEntryException if the requested entry is unavailable
      */
     public String getString() throws JSONEntryException {
-        throw new JSONEntryException("This string does not exist.");
+        throw new JSONEntryException("This JSON entry is not a string.");
     }
 
     /**

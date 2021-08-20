@@ -30,23 +30,22 @@ import java.util.regex.Pattern;
 public class JSONTest {
     public static void main(String[] args) {
 
+        // Address jsAddress = new Address(101, "Main St.", "Richardsville", "New Hampshire", 154248, "United States");
+        // Address bgAddress = new Address(234, "Dale Ave.", "Ocean City", "New Jersey", 231243, "United States");
+        // Address jhAddress = new Address(124, "Main St.", "Richardsville", "New Hampshire", 154248, "United States");
+        // List<Person> friends = new ArrayList<>();
+        // friends.add(new Person("Bob Green", 26, bgAddress, new ArrayList<Person>()));
+        // friends.add(new Person("Jane Harvey", 32, jhAddress, new ArrayList<Person>()));
+        // Person jsPerson = new Person("John Smith", 33, jsAddress, friends);
+        // JSON jsAsJSON = JSONSerializer.serializeJSON(jsPerson);
 
-        Address jsAddress = new Address(101, "Main St.", "Richardsville", "New Hampshire", 154248, "United States");
-        Address bgAddress = new Address(234, "Dale Ave.", "Ocean City", "New Jersey", 231243, "United States");
-        Address jhAddress = new Address(124, "Main St.", "Richardsville", "New Hampshire", 154248, "United States");
-        List<Person> friends = new ArrayList<>();
-        friends.add(new Person("Bob Green", 26, bgAddress, new ArrayList<Person>()));
-        friends.add(new Person("Jane Harvey", 32, jhAddress, new ArrayList<Person>()));
-        Person jsPerson = new Person("John Smith", 33, jsAddress, friends);
-        JSON jsAsJSON = JSONSerializer.serializeJSON(jsPerson);
-
-        try {
-            TextFileWriter writer = new TextFileWriter(new File("/jsAsJSON.json"));
-            writer.printString(jsAsJSON.exportJSON(JSONFormatOption.ArrayNewlinePerItem.TRUE, JSONFormatOption.ObjectBeginOnNewline.FALSE));
-            writer.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        // try {
+        //     TextFileWriter writer = new TextFileWriter(new File("/jsAsJSON.json"));
+        //     writer.printString(jsAsJSON.exportJSON(JSONFormatOption.ArrayNewlinePerItem.TRUE, JSONFormatOption.ObjectBeginOnNewline.FALSE));
+        //     writer.close();
+        // } catch (Exception e) {
+        //     System.out.println(e);
+        // }
 
 
 

@@ -22,10 +22,14 @@ package com.team2363.lib.json;
  * would be thrown if a user attempted to retrieve a
  * <code>StringJSONEntry</code> from an <code>ObjectJSONEntry</code> when a
  * <code>NumberJSONEntry</code> was in the entry.
+ * <p>
+ * This is an <i>unchecked exception</i>, ensure that code that implements
+ * this API knows what kind of data should be in each <code>JSONEntry</code>
+ * to avoid this error.
  *
  * @author Justin Babilino
  */
-public class JSONEntryException extends Exception {
+public class JSONEntryException extends RuntimeException {
 
     /**
      * Constructs a <code>JSONEntryException</code> with a message to be

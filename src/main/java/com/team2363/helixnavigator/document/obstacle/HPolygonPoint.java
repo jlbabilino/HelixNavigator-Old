@@ -1,12 +1,12 @@
 package com.team2363.helixnavigator.document.obstacle;
 
-import com.team2363.helixnavigator.document.HAbstractPathElement;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.helixnavigator.document.HPathElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
-public class HPolygonPoint extends HAbstractPathElement {
+public class HPolygonPoint extends HPathElement {
     private final DoubleProperty x = new SimpleDoubleProperty(this, "x", 0.0);
     private final DoubleProperty y = new SimpleDoubleProperty(this, "y", 0.0);
 
@@ -31,7 +31,7 @@ public class HPolygonPoint extends HAbstractPathElement {
         x.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "x")
+    @SerializedJSONObjectValue(key = "x")
     public final double getX() {
         return x.get();
     }
@@ -44,7 +44,7 @@ public class HPolygonPoint extends HAbstractPathElement {
         y.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "y")
+    @SerializedJSONObjectValue(key = "y")
     public final double getY() {
         return y.get();
     }

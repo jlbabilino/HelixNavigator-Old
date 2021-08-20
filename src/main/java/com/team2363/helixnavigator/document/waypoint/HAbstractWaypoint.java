@@ -16,8 +16,8 @@
  */
 package com.team2363.helixnavigator.document.waypoint;
 
-import com.team2363.helixnavigator.document.HAbstractPathElement;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.helixnavigator.document.HBasePathElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -28,7 +28,7 @@ import javafx.beans.property.StringProperty;
  *
  * @author Justin Babilino
  */
-public abstract class HAbstractWaypoint extends HAbstractPathElement {
+public abstract class HAbstractWaypoint extends HBasePathElement {
     
     public static enum WaypointType {
         SOFT, HARD
@@ -60,7 +60,7 @@ public abstract class HAbstractWaypoint extends HAbstractPathElement {
         x.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "x")
+    @SerializedJSONObjectValue(key = "x")
     public final double getX() {
         return x.get();
     }
@@ -73,7 +73,7 @@ public abstract class HAbstractWaypoint extends HAbstractPathElement {
         y.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "y")
+    @SerializedJSONObjectValue(key = "y")
     public final double getY() {
         return y.get();
     }
@@ -86,11 +86,11 @@ public abstract class HAbstractWaypoint extends HAbstractPathElement {
         name.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "name")
+    @SerializedJSONObjectValue(key = "name")
     public final String getName() {
         return name.get();
     }
     
-    @SerializedJSONObjectElement(key = "waypoint_type")
+    @SerializedJSONObjectValue(key = "waypoint_type")
     public abstract WaypointType getWaypointType();
 }

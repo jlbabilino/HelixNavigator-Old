@@ -19,9 +19,11 @@ package com.team2363.helixnavigator.document.field;
 import com.team2363.helixnavigator.document.obstacle.HAbstractObstacle;
 import com.team2363.lib.json.JSONEntry;
 import com.team2363.lib.json.JSONSerializable;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -64,6 +66,10 @@ public class HField {
      */
     private final StringProperty fieldImageB64 = new SimpleStringProperty(this, "fieldImage", "");
     /**
+     * The property indicating whether or not the field image should be displayed
+     */
+    private final BooleanProperty fieldImageShown = new SimpleBooleanProperty(this, "fieldImageShown", true);
+    /**
      * The list of obstacles that are a part of the field
      */
     private final ObservableList<HAbstractObstacle> obstacles = FXCollections.<HAbstractObstacle>observableArrayList();
@@ -91,7 +97,7 @@ public class HField {
     /**
      * @return the current name
      */
-    @SerializedJSONObjectElement(key = "name")
+    @SerializedJSONObjectValue(key = "name")
     public final String getName() {
         return name.get();
     }
@@ -113,7 +119,7 @@ public class HField {
     /**
      * @return the current image resolution
      */
-    @SerializedJSONObjectElement(key = "image_res")
+    @SerializedJSONObjectValue(key = "image_res")
     public final double getImageRes() {
         return imageRes.get();
     }
@@ -135,7 +141,7 @@ public class HField {
     /**
      * @return the current x image offset
      */
-    @SerializedJSONObjectElement(key = "x_image_offset")
+    @SerializedJSONObjectValue(key = "x_image_offset")
     public final double getXImageOffset() {
         return xImageOffset.get();
     }
@@ -157,7 +163,7 @@ public class HField {
     /**
      * @return the current y image offset
      */
-    @SerializedJSONObjectElement(key = "y_image_offset")
+    @SerializedJSONObjectValue(key = "y_image_offset")
     public final double getYImageOffset() {
         return yImageOffset.get();
     }
@@ -179,15 +185,25 @@ public class HField {
     /**
      * @return the current field image base 64
      */
-    @SerializedJSONObjectElement(key = "image_b64")
+    @SerializedJSONObjectValue(key = "image_b64")
     public final String getFieldImageB64() {
         return fieldImageB64.getValue();
     }
 
+    public final BooleanProperty fieldImageShownProperty() {
+        return fieldImageShown;
+    }
+    public final void setFieldImageShown(boolean value) {
+        fieldImageShown.set(value);
+    }
+    public final boolean getFieldImageShown() {
+        return fieldImageShown.get();
+    }
+    
     /**
      * @return the list of obstacles
      */
-    @SerializedJSONObjectElement(key = "obstacles")
+    @SerializedJSONObjectValue(key = "obstacles")
     public final ObservableList<HAbstractObstacle> getObstacles() {
         return obstacles;
     }

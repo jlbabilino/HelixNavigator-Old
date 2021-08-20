@@ -16,7 +16,7 @@
  */
 package com.team2363.helixnavigator.document.obstacle;
 
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,7 +52,7 @@ public class HPolygonObstacle extends HAbstractObstacle {
         points.forEach(point -> point.translateRelativeY(y));
     }
 
-    @SerializedJSONObjectElement(key = "points")
+    @SerializedJSONObjectValue(key = "points")
     public ObservableList<HPolygonPoint> getPoints() {
         return points;
     }

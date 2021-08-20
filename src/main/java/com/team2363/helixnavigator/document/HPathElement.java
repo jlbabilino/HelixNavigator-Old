@@ -1,16 +1,16 @@
 package com.team2363.helixnavigator.document;
 
 import com.team2363.lib.json.JSONSerializable;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 @JSONSerializable
-public abstract class HAbstractPathElement {
+public abstract class HPathElement {
     private final BooleanProperty selected = new SimpleBooleanProperty(this, "selected", false);
 
-    protected HAbstractPathElement() {
+    protected HPathElement() {
     }
 
     public abstract void translateRelativeX(double x);
@@ -25,7 +25,7 @@ public abstract class HAbstractPathElement {
         selected.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "selected")
+    @SerializedJSONObjectValue(key = "selected")
     public final boolean getSelected() {
         return selected.get();
     }

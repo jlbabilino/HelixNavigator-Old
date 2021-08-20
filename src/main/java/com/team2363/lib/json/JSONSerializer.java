@@ -1,10 +1,12 @@
 package com.team2363.lib.json;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -25,23 +27,23 @@ public class JSONSerializer {
         } else {
             Class<?> cls = obj.getClass();
             if (cls.isAnnotationPresent(JSONSerializable.class)) {
-                Field[] fields = cls.getDeclaredFields();
+                Field[] fields = cls.getFields(); // no need to check for accessiblity since using these methods
                 Method[] methods = cls.getMethods();
                 switch (cls.getAnnotation(JSONSerializable.class).rootType()) {
                     case OBJECT:
                         Map<String, JSONEntry> objectMap = new HashMap<>();
                         for (Field field : fields) {
-                            if (field.isAnnotationPresent(SerializedJSONObjectElement.class) && field.canAccess(obj)) {
+                            if (field.isAnnotationPresent(SerializedJSONObjectValue.class)) {
                                 try {
-                                    objectMap.put(field.getAnnotation(SerializedJSONObjectElement.class).key(), serializeJSONEntry(field.get(obj)));
-                                } catch (IllegalAccessException e) { // this will never occur because it was checked for (Field.canAccess)
+                                    objectMap.put(field.getAnnotation(SerializedJSONObjectValue.class).key(), serializeJSONEntry(field.get(obj)));
+                                } catch (IllegalAccessException e) { // this will never occur because it was checked for
                                 }
                             }
                         }
                         for (Method method : methods) {
-                            if (method.isAnnotationPresent(SerializedJSONObjectElement.class) && method.canAccess(obj) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
+                            if (method.isAnnotationPresent(SerializedJSONObjectValue.class) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
                                 try {
-                                    objectMap.put(method.getAnnotation(SerializedJSONObjectElement.class).key(), serializeJSONEntry(method.invoke(obj)));
+                                    objectMap.put(method.getAnnotation(SerializedJSONObjectValue.class).key(), serializeJSONEntry(method.invoke(obj)));
                                 } catch (IllegalAccessException | InvocationTargetException e) {
                                 }
                             }
@@ -51,17 +53,17 @@ public class JSONSerializer {
                     case ARRAY:
                         Map<Integer, JSONEntry> arrayMap = new HashMap<>();
                         for (Field field : fields) {
-                            if (field.isAnnotationPresent(SerializedJSONArrayElement.class) && field.canAccess(obj)) {
+                            if (field.isAnnotationPresent(SerializedJSONArrayItem.class)) {
                                 try {
-                                    arrayMap.put(field.getAnnotation(SerializedJSONArrayElement.class).index(), serializeJSONEntry(field.get(obj)));
+                                    arrayMap.put(field.getAnnotation(SerializedJSONArrayItem.class).index(), serializeJSONEntry(field.get(obj)));
                                 } catch (IllegalAccessException e) {
                                 }
                             }
                         }
                         for (Method method : methods) {
-                            if (method.isAnnotationPresent(SerializedJSONArrayElement.class) && method.canAccess(obj) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
+                            if (method.isAnnotationPresent(SerializedJSONArrayItem.class) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
                                 try {
-                                    arrayMap.put(method.getAnnotation(SerializedJSONArrayElement.class).index(), serializeJSONEntry(method.invoke(obj)));
+                                    arrayMap.put(method.getAnnotation(SerializedJSONArrayItem.class).index(), serializeJSONEntry(method.invoke(obj)));
                                 } catch (IllegalAccessException | InvocationTargetException e) {
                                 }
                             }
@@ -83,6 +85,102 @@ public class JSONSerializer {
                         }
                         entry = new JSONArray(arrayEntries);
                         break;
+
+                    case BOOLEAN:
+                        search: {
+                            for (Field field : fields) {
+                                if (field.isAnnotationPresent(SerializedJSONBoolean.class)) {
+                                    try {
+                                        Object fieldValue = field.get(obj);
+                                        if (fieldValue != null) {
+                                            entry = new JSONBoolean((boolean) fieldValue);
+                                            break search; // literally, break out of the search because it's been found
+                                        }
+                                    } catch (IllegalAccessException | ClassCastException e) {
+                                        // code only reaches this point if the field wasn't actually a boolean
+                                        // that's bad on the developers part and should be checked for but I'm
+                                        // not going to worry about exceptions because the idea is that this
+                                        // method just works no matter what you throw at it. That is in contrast
+                                        // to the deserializer which can have many errors thrown while using it.
+                                    }
+                                }
+                            }
+                            for (Method method : methods) {
+                                if (method.isAnnotationPresent(SerializedJSONBoolean.class) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
+                                    try {
+                                        Object methodResult = method.invoke(obj);
+                                        if (methodResult != null) {
+                                            entry = new JSONBoolean((boolean) methodResult);
+                                            break search;
+                                        }
+                                    } catch (IllegalAccessException | InvocationTargetException | ClassCastException e) {
+                                    }
+                                }
+                            }
+                            entry = new JSONNull(); // if a programmer messed up THAT badly lol
+                        }
+                    break;
+
+                    case NUMBER:
+                        search: {
+                            for (Field field : fields) {
+                                if (field.isAnnotationPresent(SerializedJSONNumber.class)) {
+                                    try {
+                                        Object fieldValue = field.get(obj);
+                                        if (fieldValue != null) {
+                                            entry = new JSONNumber((Number) fieldValue);
+                                            break search;
+                                        }
+                                    } catch (IllegalAccessException | ClassCastException e) {
+                                    }
+                                }
+                            }
+                            for (Method method : methods) {
+                                if (method.isAnnotationPresent(SerializedJSONNumber.class) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
+                                    try {
+                                        Object methodResult = method.invoke(obj);
+                                        if (methodResult != null) {
+                                            entry = new JSONNumber((Number) methodResult);
+                                            break search;
+                                        }
+                                    } catch (IllegalAccessException | InvocationTargetException | ClassCastException e) {
+                                    }
+                                }
+                            }
+                            entry = new JSONNull();
+                        }
+                    break;
+
+                    case STRING:
+                        search: {
+                            for (Field field : fields) {
+                                if (field.isAnnotationPresent(SerializedJSONString.class)) {
+                                    try {
+                                        Object fieldValue = field.get(obj);
+                                        if (fieldValue != null) {
+                                            entry = new JSONString(fieldValue.toString());
+                                            break search;
+                                        }
+                                    } catch (IllegalAccessException | ClassCastException e) {
+                                    }
+                                }
+                            }
+                            for (Method method : methods) {
+                                if (method.isAnnotationPresent(SerializedJSONString.class) && method.getParameterCount() == 0 && method.getReturnType() != void.class) {
+                                    try {
+                                        Object methodResult = method.invoke(obj);
+                                        if (methodResult != null) {
+                                            entry = new JSONString(methodResult.toString());
+                                            break search;
+                                        }
+                                    } catch (IllegalAccessException | InvocationTargetException | ClassCastException e) {
+                                    }
+                                }
+                            }
+                            entry = new JSONNull();
+                        }
+                    break;
+
                     default:
                         entry = new JSONNull();
                     break;
@@ -114,4 +212,6 @@ public class JSONSerializer {
         }
         return entry;
     }
+
+    
 }

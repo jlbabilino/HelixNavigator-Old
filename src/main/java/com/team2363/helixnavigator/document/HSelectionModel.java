@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
-public class HSelectionModel<T extends HAbstractPathElement> {
+public class HSelectionModel<T extends HPathElement> {
 
     private final ObservableList<T> items;
 

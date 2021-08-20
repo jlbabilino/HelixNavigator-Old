@@ -21,38 +21,42 @@ public class Person {
         this("", 0, new Address(), new ArrayList<Person>());
     }
 
-    @SerializedJSONObjectElement(key= "friends")
+    @SerializedJSONObjectValue(key = "friends")
     public List<Person> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Person> friends) {
+    @DeserializedJSONTarget
+    public void setFriends(@DeserializedJSONObjectValue(key = "friends") List<Person> friends) {
         this.friends = friends;
     }
 
-    @SerializedJSONObjectElement(key= "address")
+    @SerializedJSONObjectValue(key = "address")
     public Address getAddress() {
         return address;
     }
 
+    @DeserializedJSONObjectValue(keys = "address")
     public void setAddress(Address address) {
         this.address = address;
     }
 
-    @SerializedJSONObjectElement(key= "age")
+    @SerializedJSONObjectValue(key = "age")
     public int getAge() {
         return age;
     }
 
+    @DeserializedJSONObjectValue(keys = "age")
     public void setAge(int age) {
         this.age = age;
     }
 
-    @SerializedJSONObjectElement(key= "name")
+    @SerializedJSONObjectValue(key= "name")
     public String getName() {
         return name;
     }
 
+    @DeserializedJSONObjectValue(keys = "name")
     public void setName(String name) {
         this.name = name;
     }

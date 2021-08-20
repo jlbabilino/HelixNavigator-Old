@@ -24,7 +24,7 @@ import com.team2363.lib.json.JSON;
 import com.team2363.lib.json.JSONEntry;
 import com.team2363.lib.json.JSONSerializable;
 import com.team2363.lib.json.JSONSerializer;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -87,7 +87,7 @@ public class HDocument {
         }
     }
 
-    @SerializedJSONObjectElement(key = "field")
+    @SerializedJSONObjectValue(key = "field")
     public final HField getField() {
         return field;
     }
@@ -95,7 +95,7 @@ public class HDocument {
     /**
      * @return ObservableList<HPath>
      */
-    @SerializedJSONObjectElement(key = "paths")
+    @SerializedJSONObjectValue(key = "paths")
     public final ObservableList<HPath> getPaths() {
         return paths;
     }

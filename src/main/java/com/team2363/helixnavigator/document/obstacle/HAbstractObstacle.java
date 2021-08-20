@@ -16,8 +16,8 @@
  */
 package com.team2363.helixnavigator.document.obstacle;
 
-import com.team2363.helixnavigator.document.HAbstractPathElement;
-import com.team2363.lib.json.SerializedJSONObjectElement;
+import com.team2363.helixnavigator.document.HBasePathElement;
+import com.team2363.lib.json.SerializedJSONObjectValue;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -28,7 +28,7 @@ import javafx.beans.property.StringProperty;
  *
  * @author Justin Babilino
  */
-public abstract class HAbstractObstacle extends HAbstractPathElement {
+public abstract class HAbstractObstacle extends HBasePathElement {
 
     public static enum ObstacleType {
         POLYGON, CIRCLE
@@ -49,7 +49,7 @@ public abstract class HAbstractObstacle extends HAbstractPathElement {
         safetyDistance.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "safety_distance")
+    @SerializedJSONObjectValue(key = "safety_distance")
     public final double getSafetyDistance() {
         return safetyDistance.get();
     }
@@ -62,11 +62,11 @@ public abstract class HAbstractObstacle extends HAbstractPathElement {
         name.set(value);
     }
 
-    @SerializedJSONObjectElement(key = "name")
+    @SerializedJSONObjectValue(key = "name")
     public final String getName() {
         return name.get();
     }
 
-    @SerializedJSONObjectElement(key = "obstacle_type")
+    @SerializedJSONObjectValue(key = "obstacle_type")
     public abstract ObstacleType getObstacleType();
 }

@@ -9,6 +9,7 @@ public class Address {
     private int zipCode;
     private String country;
 
+    @DeserializedJSONObjectValue(keys = {"street_number", "street_name", "city", "state", "zip", "country"})
     public Address(int streetNumber, String streetName, String city, String state, int zipCode, String country) {
         this.setStreetNumber(streetNumber);
         this.setStreetName(streetName);
@@ -22,7 +23,7 @@ public class Address {
         this(0, "", "", "", 0, "");
     }
 
-    @SerializedJSONObjectElement(key = "country")
+    @SerializedJSONObjectValue(key = "country")
     public String getCountry() {
         return country;
     }
@@ -31,7 +32,7 @@ public class Address {
         this.country = country;
     }
 
-    @SerializedJSONObjectElement(key = "zip")
+    @SerializedJSONObjectValue(key = "zip")
     public int getZipCode() {
         return zipCode;
     }
@@ -40,7 +41,7 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    @SerializedJSONObjectElement(key = "state")
+    @SerializedJSONObjectValue(key = "state")
     public String getState() {
         return state;
     }
@@ -49,7 +50,7 @@ public class Address {
         this.state = state;
     }
 
-    @SerializedJSONObjectElement(key = "city")
+    @SerializedJSONObjectValue(key = "city")
     public String getCity() {
         return city;
     }
@@ -58,7 +59,7 @@ public class Address {
         this.city = city;
     }
 
-    @SerializedJSONObjectElement(key = "street_name")
+    @SerializedJSONObjectValue(key = "street_name")
     public String getStreetName() {
         return streetName;
     }
@@ -67,7 +68,7 @@ public class Address {
         this.streetName = streetName;
     }
 
-    @SerializedJSONObjectElement(key = "street_number")
+    @SerializedJSONObjectValue(key = "street_number")
     public int getStreetNumber() {
         return streetNumber;
     }
